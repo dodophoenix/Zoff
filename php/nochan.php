@@ -6,11 +6,13 @@ if(isset($_GET['chan'])){
 }
 
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" ng-app="myApp">
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <base href="/">
   <?php include("header.php"); ?>
-  
+
 </head>
 <body>
     <header>
@@ -60,7 +62,7 @@ if(isset($_GET['chan'])){
     </header>
 
     <main ui-view class="center-align container">
-        
+
     </main>
 
     <footer class="page-footer">

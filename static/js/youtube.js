@@ -25,7 +25,7 @@ var playing = false;
 //play new song
 function setup_youtube_listener(channel)
 {
-	socket.on(channel.toLowerCase()+",np", function(obj)
+	socket.on("np", function(obj)
 	{
 		console.log(obj);
 		if(obj[0].length == 0){
@@ -67,7 +67,7 @@ function setup_youtube_listener(channel)
 		}
 	});
 
-	socket.on(channel.toLowerCase()+",viewers", function(view)
+	socket.on("viewers", function(view)
 	{
 		viewers = view;
 		if(song_title !== undefined)
@@ -77,9 +77,9 @@ function setup_youtube_listener(channel)
 
 $(document).ready(function()
 {
-	if(!localStorage["list_update"])
+	if(!localStorage["list_update"] || localStorage["list_update"] != "13.06.15")
 	{
-		localStorage.setItem("list_update", "applied");
+		localStorage.setItem("list_update", "13.06.15");
 		window.location.reload(true);
 	}
 	setup_youtube_listener(chan);
@@ -137,7 +137,7 @@ $(document).ready(function()
 		git_info = $.parseJSON(git_info);
 		$("#latest-commit").html("Latest Commit: <br>"
 				+ git_info[0].commit.author.date.substring(0,10)
-				+ ": " + git_info[0].commit.author.name
+				+ ": " + git_info[0].committer.login
 				+ "<br><a href='"+git_info[0].html_url+"'>"
 				+ git_info[0].sha.substring(0,10) + "</a>: "
 				+ git_info[0].commit.message+"<br");
