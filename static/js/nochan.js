@@ -1,6 +1,6 @@
 var list_html;
 var git_info;
-
+var durationInterval;
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -78,7 +78,8 @@ function sortFunction(a, b) {
 function loadChannels(){ //Denne blir kjørt hver gang man bytter tilbake til liste visning av kanaler, kanskje ikke det lureste
     list_html = $("#channels").html();
     $("#channels").empty();
-    var socket = io.connect('https://zoff.no:3000');
+
+    var socket = io.connect('//'+window.location.hostname+':3000', {'force new connection': true});
     var playlists = [];
     var once = true;
     socket.emit('frontpage_lists');
@@ -91,6 +92,10 @@ function loadChannels(){ //Denne blir kjørt hver gang man bytter tilbake til li
 }
 
 $(document).ready(function (){
+
+  clearInterval(durationInterval);
+  console.log("asddddddd")
+  loadChannels();
 
     //Materialize.toast("<a href='/remote' style='color:white;'>Try out our new feature, remote!</a>", 8000)
 
