@@ -1,4 +1,6 @@
 
+<main class="center-align container">
+
     <div class="section">
     <h3 id="remote-text"></h3>
     </div>
@@ -8,7 +10,7 @@
                 <input type="range" title="Volume" id="volume-control" style="display:none;" min="0" value="100" max="100" />
             </p>-->
 
-            <form class="row" id="base" onsubmit="window.location.href = '/remote/'+this.chan.value;return false;">
+            <form class="row" id="base" ng-submit="remoteChan(chan);checkIt();">
                     <div class="input-field col s12">
                         <input
                             class="input-field"
@@ -23,6 +25,7 @@
                             maxlength="10"
                             autocomplete
                             length="10"
+                            ng-model="chan"
                         />
                         <label for="search" id="forsearch">Type ID of host to be controlled</label>
                 </div>
@@ -51,5 +54,8 @@
             To find the ID of your player, click the Conf <i class="mdi-action-settings"></i> icon on the top right of the player page, then "Remote Control".
             <br>You can either scan the QR code or type the ID manually.
         </div>
+
+        </main>
+
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
         <script type="text/javascript" src="/static/js/remotecontroller.js"></script>
