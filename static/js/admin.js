@@ -16,7 +16,7 @@ var Admin = {
     		        break;
     		    case "wrongpass":
     		        msg=Helper.rnd(["That's not the right password!", "Wrong! Better luck next time...", "You seem to have mistyped the password", "Incorrect. Have you tried meditating?","Nope, wrong password!", "Wrong password. The authorities have been notified."])
-					Crypt.remove_pass(chan.toLowerCase());
+					if(!embed) Crypt.remove_pass(chan.toLowerCase());
                     Admin.display_logged_out();
                     w_p = true;
 					break;
@@ -72,7 +72,7 @@ var Admin = {
     		names     = ["vote","addsongs","longsongs","frontpage", "allvideos", 
             "removeplay", "skip", "shuffle"];
 
-            Crypt.set_pass(chan.toLowerCase(), Crypt.decrypt_pass(msg))
+            if(!embed) Crypt.set_pass(chan.toLowerCase(), Crypt.decrypt_pass(msg))
 
     		for (var i = 0; i < names.length; i++) {
     				$("input[name="+names[i]+"]").attr("disabled", false);
@@ -91,11 +91,14 @@ var Admin = {
 
     	socket.on("conf", function(msg)
     	{
-            Crypt.init();
-    		Admin.set_conf(msg[0]);
-            if(Crypt.get_pass(chan.toLowerCase()) !== undefined && Admin.beginning && Crypt.get_pass(chan.toLowerCase()) != ""){
-                socket.emit("password", [Crypt.crypt_pass(Crypt.get_pass(chan.toLowerCase())), chan.toLowerCase()]);
-                Admin.beginning = false;
+            if(!embed){
+                console.log("dickfuck");
+                Crypt.init();
+        		Admin.set_conf(msg[0]);
+                if(Crypt.get_pass(chan.toLowerCase()) !== undefined && Admin.beginning && Crypt.get_pass(chan.toLowerCase()) != ""){
+                    socket.emit("password", [Crypt.crypt_pass(Crypt.get_pass(chan.toLowerCase())), chan.toLowerCase()]);
+                    Admin.beginning = false;
+                }
             }
     	});
     },

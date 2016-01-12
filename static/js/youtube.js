@@ -4,9 +4,11 @@ var Youtube = {
     {
     	socket.on("np", function(obj)
     	{
+            console.log(obj);
     		if(obj[0].length == 0){
 
-    			document.getElementById('song-title').innerHTML = "Empty channel. Add some songs!";
+                $("#song-title").html("Empty channel. Add some songs!");
+    			//document.getElementById('song-title').innerHTML = "Empty channel. Add some songs!";
     			$("#player_overlay").height($("#player").height());
 
     			if(!/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) $("#player_overlay").toggleClass("hide");
@@ -108,12 +110,17 @@ var Youtube = {
     	var outPutWord    = v > 1 ? "viewers" : "viewer";
     	var title         = decodeURIComponent(titt);
     	var elem          = document.getElementById('song-title');
-        var viewers       = document.getElementById('viewers');
+        //var viewers       = document.getElementById('viewers');
 
-    	document.title    = title + " • Zöff / "+chan;
-		elem.innerHTML    = title;
-		viewers.innerHTML = v + " " + outPutWord;
-		elem.title        = title + " • " + v + " " + outPutWord;
+        if(!embed){
+    	   document.title    = title + " • Zöff / "+chan;
+        
+    		//elem.innerHTML    = title;
+    		//viewers.innerHTML = v + " " + outPutWord;
+    		elem.title        = title + " • " + v + " " + outPutWord;
+            $("#song-title").html(title);
+            $("#viewers").html(v + " " + outPutWord);
+        }
 
     },
 

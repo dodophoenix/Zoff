@@ -66,7 +66,7 @@ var Suggestions = {
 
 	checkUserEmpty: function(){
 		var length = $("#user-suggest-html").children().length
-		if(length == 0){
+		if(length == 0 && !embed){
 			if(!Helper.contains($("#user_suggests").attr("class").split(" "), "hide"))
     		  $("#user_suggests").addClass("hide");
 		}else{

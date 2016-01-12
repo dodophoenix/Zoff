@@ -1,0 +1,83 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div style="display:flex;">
+		<ul class="side-nav left-aligned chat-bar" id="chat-bar" style="list-style:none;width:185px;height:360px !important; overflow-y:scroll;position:relative;padding:0px;">
+                    <li id="chat-log">
+                        <ul class="collapsible collapsible-accordion inherit-height" style="list-style:none;padding:0px;">
+                            <li class="active inherit-height">
+
+                                <div class="collapsible-body inherit-height" style="display: block;">
+                                    <!--<ul id="chat inherit-height">-->
+                                      <div class="row inherit-height">
+                                        <div class="col s12">
+                                        </div>
+                                        <div id="channelchat" class="col s12 inherit-height"><ul style="list-style:none;padding:0px;" id="chatchannel" class="inherit-height"></ul></div>
+                                      </div>
+                                    <!--</ul>-->
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="chat-input" style="position:absolute;bottom:0px;">
+                      <form action="#" id="chatForm" onsubmit="return false;">
+                        <input id="text-chat-input" name="input" type="text" autocomplete="off" placeholder="Chat" maxlength="150" />
+                      </form>
+                    </li>
+                </ul>
+        <div id="player_and_controls">
+		<div id="player" class="ytplayer" style="width:360px;height:360px;"></div>
+	    <div id="controls" class="noselect">
+	      <div id="playpause">
+	        <i id="play" class="mdi-av-play-arrow hide" style='content: "\e6bb";'></i>
+	        <i id="pause" class="mdi-av-pause"></i>
+	      </div>
+	      <div id="duration">00:00 / 00:00</div>
+	      <div id="fullscreen">
+	        <i class="mdi-navigation-fullscreen"></i>
+	      </div>
+	      <div id="volume-button">
+	        <i id="v-mute" class="mdi-av-volume-off"></i>
+	        <i id="v-low" class="mdi-av-volume-mute"></i>
+	        <i id="v-medium" class="mdi-av-volume-down"></i>
+	        <i id="v-full" class="mdi-av-volume-up"></i>
+	      </div>
+	      <div id="volume"></div>
+	      <div id="viewers"></div>
+	      <div id="bar"></div>
+	    </div>
+	    </div>
+	    <div id="playlist" style="height:360px !important;width:360px;overflow-y:scroll;overflow-x:hidden;">
+                <div id="wrapper">
+                    <div id="list-song-html">
+                        <div id="list-song" class="card left-align list-song" style="">
+                        <div class="lazy card-image cardbg list-image" style="background-image:url('https://zoff.no/static/images/loading.png');height:100px !important;width:100px; !important"></div>
+                            <div class="clickable vote-container" title="Vote!">
+                                <a class="clickable center-align votebg">
+                                    <span class="flow-text truncate list-title"></span>
+                                </a>
+                                <div class="card-content">
+                                    <span class="vote-span">
+                                        <span class="list-votes"></span>
+                                        <span class="highlighted vote-text">&nbsp;votes</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="https://zoff.no/static/dist/lib/materialize.min.js"></script>
+		<script type="text/javascript" src="//cdn.socket.io/socket.io-1.3.5.js"></script>
+		<script type="text/javascript" src="/static/dist/lib/jquery.lazyload.js"></script>
+	    <script type="text/javascript" src="/static/dist/lib/color-thief.js"></script>
+	    <script type="text/javascript" src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+	    <script type="text/javascript" src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+		<script type="text/javascript">window.chan = "electro";window.embed = true;</script>
+		<script src="localhost/static/dist/main.min.js"></script>
+	</body>
+</html>

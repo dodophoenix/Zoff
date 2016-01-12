@@ -45,7 +45,8 @@ var Chat = {
 
   setup_chat_listener: function(channel)
   {
-    document.getElementsByClassName("chat-tab")[0].innerHTML = channel;
+    $($(".chat-tab")[0]).html(channel);
+    //document.getElementsByClassName("chat-tab")[0].innerHTML = channel;
     socket.on("chat", function(data)
     {
       if($("#chat-bar").position()["left"] != 0)

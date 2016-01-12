@@ -1,3 +1,4 @@
+
 var chan 				  = $("#chan").html();
 var w_p 				  = true;
 var hasadmin			  = 0;
@@ -24,6 +25,7 @@ var SAMPLE_RATE 		  = 6000; // 6 seconds
 var lastSample 			  = Date.now();
 var began 				  = false;
 var i 					  = -1;
+var embed				  = window.embed == undefined ? false : true;
 
 var id;
 var full_playlist;
@@ -46,9 +48,10 @@ var connection_options = {
 
 if(window.location.hostname == "zoff.no") add = "https://zoff.no";
 else add = "localhost";
+console.log(add);
 var socket = io.connect(''+add+':8880', connection_options);
 socket.on("get_list", function(){
-    socket.emit('list', chan.toLowerCase());
+    socket.emit('list', "tropicala");
 });
 
 socket.on("suggested", function(params){
@@ -117,7 +120,7 @@ $(document).ready(function()
 			closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
 		});
 
-		$(".drag-target")[1].remove();
+		$($(".drag-target")[1]).remove();
 
 		if(!Helper.msieversion()) Notification.requestPermission();
 		if(navigator.userAgent.toLowerCase().indexOf("firefox") > -1) //quickdickfix for firefoxs weird percent handling
@@ -235,7 +238,7 @@ $(window).focus(function(){
   }
 });
 
-document.getElementById("chat-btn").addEventListener("click", function(){
+$("#chat-btn").click(function(){
     $("#text-chat-input").focus();
     //$("#chat-btn").css("color", "white");
     $("#chat-btn i").css("opacity", 1);

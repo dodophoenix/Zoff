@@ -244,7 +244,8 @@ var List = {
             song.find(attr).attr("data-video-title", video_title);
             song.find(attr).attr("data-video-length", song_info.length);
             song.find("#list-song").attr("id", "suggested-" + video_id);
-            song.find(".list-image").attr("class", song.find(".list-image").attr("class").replace("list-image", "list-suggested-image"));
+
+            if(!embed) song.find(".list-image").attr("class", song.find(".list-image").attr("class").replace("list-image", "list-suggested-image"));
 
         }
 

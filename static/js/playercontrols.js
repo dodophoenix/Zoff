@@ -11,9 +11,12 @@ var Playercontrols = {
 
     initControls: function()
     {
-    	document.getElementById("volume-button").addEventListener("click", Playercontrols.mute_video);
-    	document.getElementById("playpause").addEventListener("click", Playercontrols.play_pause);
-    	document.getElementById("fullscreen").addEventListener("click", Playercontrols.fullscreen);
+        $("#volumen-button").click(Playercontrols.mute_video);
+    	$("#playpause").click(Playercontrols.play_pause);
+        $("#fullscreen").click(Playercontrols.fullscreen);
+        //document.getElementById("volume-button").addEventListener("click", Playercontrols.mute_video);
+    	//document.getElementById("playpause").addEventListener("click", Playercontrols.play_pause);
+    	//document.getElementById("fullscreen").addEventListener("click", Playercontrols.fullscreen);
 
     },
 
@@ -164,7 +167,8 @@ var Playercontrols = {
     		currDurr = duration;
     	minutes = Math.floor(currDurr / 60);
     	seconds = currDurr - minutes * 60;
-    	document.getElementById("duration").innerHTML = Helper.pad(minutes)+":"+Helper.pad(seconds)+" <span id='dash'>/</span> "+Helper.pad(dMinutes)+":"+Helper.pad(dSeconds);
+        $("#duration").html(Helper.pad(minutes)+":"+Helper.pad(seconds)+" <span id='dash'>/</span> "+Helper.pad(dMinutes)+":"+Helper.pad(dSeconds));
+    	//document.getElementById("duration").innerHTML = Helper.pad(minutes)+":"+Helper.pad(seconds)+" <span id='dash'>/</span> "+Helper.pad(dMinutes)+":"+Helper.pad(dSeconds);
     	per = (100 / duration) * currDurr;
     	if(per >= 100)
     		per = 100;
