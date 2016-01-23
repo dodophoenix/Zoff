@@ -230,7 +230,7 @@ var Youtube = {
           'onReady': Youtube.onPlayerReady,
           'onStateChange': Youtube.onPlayerStateChange,
           'onError': Youtube.errorHandler
-        }
+        } 
       });
     },
 
