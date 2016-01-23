@@ -28,6 +28,8 @@ var Nochan = {
 
   winter: false,
 
+  frontpage: true,
+
   populate_channels: function(lists)
   {
       var output = "";
@@ -167,7 +169,7 @@ var Nochan = {
    
     }
     setTimeout(function(){
-      Nochan.add_backdrop(list, i+1);
+      if(Nochan.frontpage) Nochan.add_backdrop(list, i+1);
     },6000);
     
   },
@@ -204,6 +206,21 @@ var Nochan = {
     $("#channel-load").css("display", "block");
     window.scrollTo(0, 0);
 
+    Nochan.frontpage = false;
+
+    socket.removeAllListeners("playlists");
+    socket.removeAllListeners("toast");
+    socket.removeAllListeners("pw");
+    socket.removeAllListeners("conf");
+    socket.removeAllListeners("chat.all");
+    socket.removeAllListeners("chat");
+    socket.removeAllListeners("id");
+    socket.removeAllListeners("channel");
+    socket.removeAllListeners("get_list");
+    socket.removeAllListeners('playlists');
+    socket.removeAllListeners("np");
+    socket.removeAllListeners("viewers");
+
     $.ajax({
       url: chan + "/php/channel.php",
       success: function(e){
@@ -221,7 +238,9 @@ var Nochan = {
         $("body").attr("id", "channelpage");
         $("header").html($($(e)[0]).html());
         $("main").html($($(e)[2]).html());
+
         $("#scripts").html($($(e)[4]).html());
+        
       }
     });
   }
