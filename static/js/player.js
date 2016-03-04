@@ -10,6 +10,7 @@ var Player = {
     {
     	socket.on("np", function(obj)
     	{
+            console.log("np");
             Player.loaded      = false;
 
     		if(obj.length == 0){
@@ -52,7 +53,6 @@ var Player = {
     			//if(player_ready && !window.mobilecheck())
                 if(player_ready && !window.MSStream)
     			{
-                    
     				try{
                         if(Player.ytplayer.getVideoUrl().split('v=')[1] != video_id)
         				{
