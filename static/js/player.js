@@ -3,14 +3,13 @@ var Player = {
     loaded: true,
     before_load: "",
     after_load: "",
-    ytplayer: "",
+    ytplayer: "",   
     stopInterval: false,
 
     setup_youtube_listener: function(channel)
     {
     	socket.on("np", function(obj)
     	{
-            console.log("np");
             Player.loaded      = false;
 
     		if(obj.length == 0){
@@ -62,7 +61,7 @@ var Player = {
         					if(paused)
         						Player.ytplayer.pauseVideo();
         				}
-
+                        console.log(durationBegun, embed);
         				if(!paused){
                             if(!mobile_beginning)
         					   Player.ytplayer.playVideo();
