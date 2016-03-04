@@ -61,11 +61,10 @@ var Player = {
         					if(paused)
         						Player.ytplayer.pauseVideo();
         				}
-                        console.log(durationBegun, embed);
         				if(!paused){
                             if(!mobile_beginning)
         					   Player.ytplayer.playVideo();
-                            if(!durationBegun || embed)
+                            if(!durationBegun)
                                 Player.durationSetter();
                             mobile_beginning = false;
                         }
@@ -75,7 +74,7 @@ var Player = {
 
                         setTimeout(function(){Player.loaded = true;},500);
                     }catch(e){
-                        if(!durationBegun || embed)
+                        if(!durationBegun)
                             Player.durationSetter();
                     }
     			}
@@ -182,7 +181,7 @@ var Player = {
     			$(".playlist").css("opacity", "1");
     			Player.ytplayer.loadVideoById(video_id);
                 if(autoplay && !window.mobilecheck()) Player.ytplayer.playVideo();
-                if(!durationBegun || embed)
+                if(!durationBegun)
                     Player.durationSetter();
                 if(embed){
                     setTimeout(function(){
@@ -190,6 +189,7 @@ var Player = {
                         if(!autoplay){
                             Player.ytplayer.pauseVideo();
                             Playercontrols.play_pause_show();
+                            Player.durationSetter();
                         }
                     }, 1000);
                 }else
