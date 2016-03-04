@@ -277,7 +277,7 @@ var Player = {
         /*try{
             //duration = Player.ytplayer.getDuration();
         }catch(e){};*/
-        console.log(duration);
+        console.log(" Duartion : " + duration);
         if(duration != undefined){
             try{
                 durationBegun = true;
